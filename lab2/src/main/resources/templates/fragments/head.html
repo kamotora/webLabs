@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Портал автомастерских. Автомастерские регистрируются на сайте и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла и проч.). Пользователи могут оставить заявку и выбрать из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).">
+    <meta name="keywords" content="портал автомастерских, ремонт авто">
+    <link rel="icon" type="image/png" th:href="@{/assets/logo.png}" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title th:text="${title}"></title>
+</head>
+</html>

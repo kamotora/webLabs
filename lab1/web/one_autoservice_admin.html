@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Портал автомастерских. Автомастерские регистрируются на сайте и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла и проч.). Пользователи могут оставить заявку и выбрать из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).">
+    <meta name="keywords" content="портал автомастерских, ремонт авто">
+    <link rel="icon" type="image/png" href="assets/logo.png" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Редактирование автосервиса</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" width="32" height="32">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownAutoservices" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для автосервисов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownAutoservices">
+                    <a class="dropdown-item" href="all_requests.html">Список заявок</a>
+                    <div class="dropdown-divider active"></div>
+                    <a class="dropdown-item" href="one_autoservice_admin.html">Добавить автосервис</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClients" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для клиентов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                    <a class="dropdown-item" href="autoservices.html">Список автосервисов</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="one_request_admin.html">Добавить заявку на ремонт</a>
+                </div>
+            </li>
+            <!--
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" width="32" height="32">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="autoservices.html">Список автомастерских<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="admin_autoservices.html">Редактирование автомастерских</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="one_autoservice_admin.html">Добавление автомастерской</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+            -->
+            <li class="nav-item">
+                <a class="nav-link " href="admin_autoservices.html">Редактирование автомастерских</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <form class="mt-2">
+        <div class="form-group">
+            <label for="name">Название автосервиса</label>
+            <input class="form-control" id="name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="address">Адрес</label>
+            <input class="form-control" id="address" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="tel">Телефон</label>
+            <input type="tel" class="form-control" id="tel" placeholder="+71234567890">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="auto@mail.ru">
+        </div>
+        <div class="form-group">
+            <label class="font-search-subtitle">Услуги</label>
+            <div class="list-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck1">Шиномонтаж</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck2">Плановое ТО</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck3" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck3">Замена жидкостей</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck4">Кузовной ремонт</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck5" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck5">Ремонт подвески</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck6">Ремонт двигателя</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck7" name="servicesCheck">
+                    <label class="custom-control-label" for="customCheck7">Диагностика</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Описание</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="photo">Текущее фото</label>
+            <br>
+            <a href="#" id="photo"><img class="img-fluid" src="assets/no-image.png" width="400" height="700" alt=""></a>
+        </div>
+        <div class="form-group">
+            <label for="newPhotoSelect">Выберите новое фото</label>
+            <input type="file" class="form-control-file" id="newPhotoSelect">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Сохранить</button>
+        </div>
+    </form>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Репин Артём ПИ62 <br>2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/e9184998a5.js" crossorigin="anonymous"></script>
+</body>
+</html>

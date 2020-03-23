@@ -1,0 +1,7 @@
+<a class="dropdown-item">
+<form method="post" action="{{ path('autoservice_delete', {'id': autoservice.id}) }}" onsubmit="return confirm('Вы точно хотите удалить данный автосервис?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ autoservice.id) }}">
+    <a class="dropdown-item" onclick="parentNode.submit();" >Удалить</a>
+</form>
+</a>

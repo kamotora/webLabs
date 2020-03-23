@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавление нового автосервиса{% endblock %}
+
+{% block body %}
+    {{ include('autoservice/_form.html.twig', {'button_label': 'Добавить', 'type': 'new'}) }}
+
+{% endblock %}

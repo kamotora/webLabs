@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(${title})"></head>
+<body>
+<nav th:replace="fragments/nav :: nav"></nav>
+<!-- Page Content -->
+<div class="container">
+
+    <form class="mt-2" th:action="@{'~/api/autoservice/add/'}" name="create-form" id="create-form" method="post" role="form">
+        <div class="form-group">
+            <label for="name">Название автосервиса</label>
+            <input class="form-control" id="name" th:name="name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="tel">Дата добавления</label>
+            <input type="date" class="form-control" id="dateAdd" th:name="dateAdd"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Адрес</label>
+            <input class="form-control" id="address" th:name="address" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="tel">Телефон</label>
+            <input type="tel" class="form-control" id="tel" th:name="tel" placeholder="+71234567890"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" th:name="email"  placeholder="auto@mail.ru"/>
+        </div>
+        <div class="form-group">
+            <label class="font-search-subtitle">Услуги</label>
+            <div class="list-group" th:each="service : ${services}">
+                <div class="custom-control custom-checkbox">
+                    <input th:type="checkbox" th:id="${service.id}" class="custom-control-input"  th:name="'servicesCheck'+${service.id}">
+                    <label class="custom-control-label" th:text="${service.name}" th:for="${service.id}"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Описание</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" th:name="description" rows="9"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="photo">Текущее фото</label>
+            <br>
+            <a href="#" id="photo"><img class="img-fluid" src="assets/no-image.png" width="400" height="700" alt=""/></a>
+        </div>
+        <div class="form-group">
+            <label for="newPhotoSelect">Выберите новое фото</label>
+            <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" th:name="photoPath" id="newPhotoSelect"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary add-autoservice-button" type="submit">Сохранить</button>
+        </div>
+    </form>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

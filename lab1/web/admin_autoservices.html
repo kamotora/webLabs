@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Портал автомастерских. Автомастерские регистрируются на сайте и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла и проч.). Пользователи могут оставить заявку и выбрать из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).">
+    <meta name="keywords" content="портал автомастерских, ремонт авто">
+    <link rel="icon" type="image/png" href="assets/logo.png" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Список автосервисов</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+        <img src="assets/logo.png" width="32" height="32">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAutoservices" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для автосервисов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownAutoservices">
+                    <a class="dropdown-item" href="all_requests.html">Список заявок</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="one_autoservice_admin.html">Добавить автосервис</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClients" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для клиентов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                    <a class="dropdown-item" href="autoservices.html">Список автосервисов</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="one_request_admin.html">Добавить заявку на ремонт</a>
+                </div>
+            </li>
+            <!--
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" width="32" height="32">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="autoservices.html">Список автомастерских<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="admin_autoservices.html">Редактирование автомастерских</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="one_autoservice_admin.html">Добавление автомастерской</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+            -->
+            <li class="nav-item active">
+                <a class="nav-link " href="admin_autoservices.html">Редактирование автомастерских</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="col mt-3 text-center"><h1>Рейтинг автосервисов</h1></div>
+    <div class="w-100"></div>
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Поиск</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Введите название автосервиса">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Найти</button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="row">
+            <div class="col-sm-3 col-md-4 mb-4">
+                <div class="card border-primary h-100">
+
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">
+                            Действия
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Посмотреть</a>
+                            <a class="dropdown-item" href="#">Изменить</a>
+                            <a class="dropdown-item" href="#">Удалить</a>
+                        </div>
+                    </div>
+                    <a class="d-none d-lg-block" href="#"><img class="card-img-top" src="assets/services/ddcar.jpg"
+                                                               width="700" height="400" alt=""></a>
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            <a href="#">DDCar</a>
+                        </h4>
+
+                        <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;улица Ленина, 235
+                            &nbsp;
+                        </div>
+                        <i class="fas fa-phone"></i><a href="tel:+74951813273">&nbsp;+7 (924) 111-33-51</a>
+                        <p class="card-text font-card-text">
+                            Автосервис «DDCAR» предлагает качественный ремонт автомобилей в по приемлемым ценам. Мы
+                            профессионально ремонтируем автомобили европейских марок любых лет выпуска уже далеко не
+                            первый год.
+                            <br>
+                            Для многих владельцев автомобилей наш автосервис является одним из немногих, где можно
+                            устранить практически любую неисправность. Благодаря многолетнему опыту и профессиональному
+                            обучению наши специалисты справятся с любой поставленной задачей по ремонту автомобиля.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Рейтинг: 4.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        <div class="w-100"></div>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Подробнее</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Записаться на ремонт</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-4 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">
+                            Действия
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Посмотреть</a>
+                            <a class="dropdown-item" href="#">Изменить</a>
+                            <a class="dropdown-item" href="#">Удалить</a>
+                        </div>
+                    </div>
+                    <a class="d-none d-lg-block" href="#"><img class="card-img-top"
+                                                               src="assets/services/check_engine.jpeg" width="700"
+                                                               height="400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Check Engine</a>
+                        </h4>
+
+                        <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;Боровский проезд,
+                            17с4 &nbsp;
+                        </div>
+                        <i class="fas fa-phone"></i><a href="tel:+74951813273">&nbsp;+7 (495) 181-32-73</a>
+                        <p class="card-text font-card-text">
+                            Рассчитаем стоимость, подберем и купим запчасти, запишем на удобное время.
+                            <br>
+                            Предлагаем всегда честные и адекватные цены.
+                            <br>
+                            С заботой о Вашем авто.
+                            <br>
+                            Приезжайте и убедитесь сами!
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Рейтинг: 5.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9733;</small>
+                        <div class="w-100"></div>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Подробнее</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Записаться на ремонт</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-4 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">
+                            Действия
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Посмотреть</a>
+                            <a class="dropdown-item" href="#">Изменить</a>
+                            <a class="dropdown-item" href="#">Удалить</a>
+                        </div>
+                    </div>
+                    <a class="d-none d-lg-block" href="#"><img class="card-img-top"
+                                                               src="assets/services/prime-motors.png" width="700"
+                                                               height="400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Прайм-моторс</a>
+                        </h4>
+
+                        <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;Электродная
+                            улица, 10с2 &nbsp;
+                        </div>
+                        <i class="fas fa-phone"></i><a href="tel:+74952367329">&nbsp;+7 (495) 236-73-29</a>
+                        <p class="card-text font-card-text">
+                            Здесь выполняется компьютерная и визуальная диагностика всех систем, узлов и агрегатов. При
+                            выявлении неисправностей специалисты произведут ремонт двигателей, АКПП, ходовой,
+                            электрооборудования, восстановление геометрии кузова на стапеле, полировку и покраску.
+                            Все работы выполняются с соблюдением установленных стандартов качества и безопасности в
+                            кратчайшие сроки.
+                            Шиномонтажная мастерская занимается заменой резины, балансировкой колес, вулканизацией,
+                            тестированием развал-схождения.
+                            <br>
+                            Предлагается услуга сезонного хранения шин
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Рейтинг: 4.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        <div class="w-100"></div>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Подробнее</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Записаться на ремонт</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-4 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">
+                            Действия
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Посмотреть</a>
+                            <a class="dropdown-item" href="#">Изменить</a>
+                            <a class="dropdown-item" href="#">Удалить</a>
+                        </div>
+                    </div>
+                    <a class="d-none d-lg-block" href="#"><img class="card-img-top"
+                                                               src="assets/services/tochka-remonta.jpeg" width="700"
+                                                               height="400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Точка Ремонта</a>
+                        </h4>
+
+                        <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;1-й Дорожный
+                            проезд, 5 &nbsp;
+                        </div>
+                        <i class="fas fa-phone"></i><a href="tel:+74953200989">&nbsp;+7 (495) 320-09-89</a>
+                        <p class="card-text font-card-text">
+                            Мы оказываем качественные услуги, будь то
+                            обслуживание двигателя, компьютерная диагностика или ремонт АКПП.
+                            <br>
+                            Мы - мастера своего дела и при обслуживании вашего автомобиля мы используем только
+                            современное профессиональное оборудование и инструмент
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Рейтинг: 3.0 &nbsp; &#9733; &#9733; &#9733; &#9734; &#9734;</small>
+                        <div class="w-100"></div>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Подробнее</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Записаться на ремонт</button>
+                    </div>
+                    <div class="w-100 m-md-4"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+
+</div>
+<!-- /.row -->
+
+
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Репин Артём ПИ62 <br>2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/e9184998a5.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${title})">
+</head>
+<body>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="col mt-3 text-center"><h1>Рейтинг автосервисов</h1></div>
+    <div class="w-100"></div>
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Поиск</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control search-input" placeholder="Введите название автосервиса">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary search-button" type="button">Найти</button>
+              </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="modal-msg" th:fragment="modalmsg" class="modal-header">
+                    <div id="goodmessageedit" th:if="${goodmessageedit != null}" th:text="${goodmessageedit}" class="alert alert-success centered" role="alert"></div>
+                    <div id="badmessageedit" th:if="${badmessageedit != null}" th:text="${badmessageedit}" class="alert alert-danger centered" role="alert"></div>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id" name="id"  placeholder="">
+                    <div class="form-group">
+                        <label for="name">Название автосервиса</label>
+                        <input class="form-control" id="name" name="name"  placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес</label>
+                        <input class="form-control" id="address" name="address"  placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Телефон</label>
+                        <input type="tel" class="form-control" id="tel" name="tel"  placeholder="+71234567890"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="auto@mail.ru"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close-modal-btn" type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="save_button">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END МОДАЛЬНОЕ ОКНО -->
+
+    <div id="for-replace" th:fragment="autoservices_fragment">
+        <div class="card my-4">
+            <div th:if="${badmessage != null}" th:text="${badmessage}" class="alert alert-danger centered" role="alert"></div>
+            <div th:if="${goodmessage != null}" th:text="${goodmessage}" class="alert alert-success centered" role="alert"></div>
+        </div>
+        <div class="row autoservices_rows">
+
+            <div th:if="${autoservices != null && autoservices.isEmpty() == false}" th:each="autoservice : ${autoservices}" class="col-sm-3 col-md-4 mb-4">
+
+                 <div class="card border-primary h-100">
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">
+                            Действия
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{'/one_autoservice/{id}'(id=${autoservice.id})}" href="#">Посмотреть</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                               th:attr="data-id=${autoservice.id},data-name=${autoservice.name},data-tel=${autoservice.tel},data-email=${autoservice.email},data-address=${autoservice.address}">Изменить основные данные</a>
+                            <a class="dropdown-item" th:href="@{'/one_autoservice_admin/{id}'(id=${autoservice.id})}" href="#">Изменить всё</a>
+                            <form id="form1" th:action="@{'/api/autoservice/delete/{id}'(id=${autoservice.id})}" method="post">
+                                <a class="dropdown-item" onclick="parentNode.submit();" >Удалить</a>
+                            </form>
+                        </div>
+                    </div>
+                    <a class="d-none d-lg-block" href="#"><img class="card-img-top" th:src="@{${autoservice.photoPath}}"
+                                                               src="assets/services/check_engine.jpeg" width="700"
+                                                               height="400" alt=""/></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a th:href="@{'/one_autoservice/{id}'(id=${autoservice.id})}"th:text="${autoservice.name}">Check Engine</a>
+                        </h4>
+
+                        <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;<a th:text="${autoservice.address}"></a></div>
+                        <i class="fas fa-phone"></i><a href="tel:+74951813273" th:text="${autoservice.tel}"></a>
+                        <p class="card-text font-card-text" th:text="${autoservice.description}"></p>
+                    </div>
+                    <div class="card-footer">
+                        <!-- <small class="text-muted">Рейтинг: 5.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9733;</small> -->
+                         <br>
+                         <small class="text-muted">Дата добавления <span th:text="${#dates.format(autoservice.dateAdd, 'dd.MM.yyyy')}"></span></small>
+                         <div class="w-100"></div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+ </div>
+ <!-- /.row -->
+
+
+<!-- /.container -->
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

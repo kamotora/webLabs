@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway&display=swap');
+
+body {
+    background-color: #f0f0f0;
+}
+
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+a {
+    color: #f85c37;
+}
+
+a:hover, a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+.address {
+    font-family: "Raleway", sans-serif;
+
+}
+
+.select:not(.is-multiple) {
+    height: 2.25em;
+}
+
+select {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    cursor: default;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+    border-image: initial;
+}
+
+.stars:before {
+    color: #EFB71C;
+    font-size: 14px;
+    font-family: FontAwesome;
+}
+
+.search {
+    background-color: #ffffff;
+    font-family: Raleway, sans-serif;
+    border: 1px solid lightgrey; /* Параметры границы */
+    font-size: 14px;
+}
+
+.font-search-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.font-search-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.font-card-text {
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.search-block {
+
+}
+
+.main__content-gradient_cashbacker {
+    background: linear-gradient(45deg, #4200b1, #359de6);
+}

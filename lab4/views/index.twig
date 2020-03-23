@@ -1,0 +1,68 @@
+{% extends 'base.twig' %}
+
+{% block title %}Список автосервисов{% endblock %}
+
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+
+    <div class="col mt-3 text-center"><h1>Список автосервисов</h1></div>
+    <div class="w-100"></div>
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Поиск</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Введите название автосервиса">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Найти</button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for autoservice in autoservices %}
+        <div class="col-sm-3 col-md-4 mb-4">
+            <div class="card border-primary h-100">
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                        Действия
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{'autoservices/'~autoservice.id }}">Посмотреть</a>
+                        <a class="dropdown-item" href="{{'autoservices/edit/'~autoservice.id }}">Изменить</a>
+                        <a class="dropdown-item">
+                            <form method="post" action="{{'autoservices/delete/'~autoservice.id }}" onsubmit="return confirm('Вы точно хотите удалить данный автосервис?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <a class="dropdown-item" onclick="parentNode.submit();" >Удалить</a>
+                            </form>
+                        </a>
+
+                    </div>
+                </div>
+                <a class="d-none d-lg-block" href="#"><img class="card-img-top" src="{{autoservice.photo}}" width="700"
+                                                           height="400" alt=""/></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{{ ('autoservice_edit', {'id': autoservice.id}) }}" >{{autoservice.name}}</a>
+                    </h4>
+
+                    <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;{{autoservice.address}}</div>
+                    <i class="fas fa-phone"></i><a href="tel:{{ autoservice.tel }}" >{{ autoservice.tel}}</a>
+                    <p class="card-text font-card-text" >{{autoservice.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <!-- <small class="text-muted">Рейтинг: 5.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9733;</small> -->
+                    <br>
+                    <small class="text-muted">Дата добавления <span>{{autoservice.date_add|date('d.m.y')}}</span></small>
+                     <div class="w-100"></div>
+                 </div>
+             </div>
+         </div>
+         {% endfor %}
+     </div>
+
+ </div>
+{% endblock %}

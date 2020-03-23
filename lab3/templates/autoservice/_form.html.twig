@@ -1,0 +1,63 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+<div class="container">
+    {% block titleForm %}{% endblock %}
+    <form class="mt-2"  name="create-form" id="create-form" method="post" role="form">
+        {{form_widget(form._token)}}
+        {{ form_errors(form)}}
+        {{  form_row (form.name, {
+            'label': 'Название автосервиса',
+            'label_attr': {'class': 'font-search-subtitle'}
+        }) }}
+        {{  form_row (form.dateAdd, {
+            'label': 'Дата добавления',
+            'label_attr': {'class': 'font-search-subtitle'}
+        }) }}
+        {{  form_row (form.address, {
+            'label': 'Адрес',
+            'label_attr': {'class': 'font-search-subtitle'}
+        }) }}
+        {{  form_row (form.tel, {
+            'label': 'Телефон',
+            'label_attr': {'class': 'font-search-subtitle'},
+        }) }}
+        {{  form_row (form.email, {
+            'label': 'Email',
+            'label_attr': {'class': 'font-search-subtitle'}
+        }) }}
+        <div class="form-group">
+            {{form_label(form.services, 'Услуги', {'label_attr': {'class': 'font-search-subtitle'}})}}
+            <div class="list-group" >
+                {% for service in allServices %}
+                <div class="custom-control custom-checkbox">
+                    {% if form.services and idServices is not null and service.id in idServices%}
+                        <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}" checked="checked">
+                    {% else %}
+                        <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}">
+                    {% endif %}
+                    <label class="custom-control-label" for="{{ service.id }}">{{ service.name}}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            {{form_label(form.description, 'Описание', {'label_attr': {'class': 'font-search-subtitle'}})}}
+            <textarea class="form-control" id="autoservice_description" name="autoservice[description]" rows="9">{{ autoservice.description }}</textarea>
+        </div>
+        <div class="form-group">
+            {{form_label(form.photo, 'Фото', {'label_attr': {'class': 'font-search-subtitle'}})}}
+            <br>
+            {% if autoservice.photo is empty%}
+                <a href="#" id="photo"><img class="img-fluid" src="{{asset('/static/assets/no-image.png') }}" width="400" height="700" alt=""/></a>
+            {% else %}
+                <a href="#" id="photo"><img class="img-fluid" src="{{asset(autoservice.photo) }}" width="400" height="700" alt=""/></a>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="newPhotoSelect">Выберите новое фото</label>
+            <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" name="autoservice[photo]" id="newPhotoSelect" value="{{ autoservice.photo }}"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">{{button_label|default('Сохранить')  }}</button>
+        </div>
+    </form>
+</div>

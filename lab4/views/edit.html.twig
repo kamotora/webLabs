@@ -1,0 +1,7 @@
+{% extends 'base.twig' %}
+
+{% block title %}Редактирование автосервиса{% endblock %}
+
+{% block body %}
+    {{ include('autoservice/_form.twig', {'button_label': 'Сохранить изменения', 'type' : 'edit'}) }}
+{% endblock %}

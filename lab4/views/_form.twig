@@ -1,0 +1,57 @@
+<div class="container">
+    {% block titleForm %}{% endblock %}
+
+    <form class="mt-2" action="{{'/autoservices/'~autoservice.id }}"  name="create-form" id="create-form" method="post" role="form">
+        <div class="form-group">
+            <label for="name">Название автосервиса</label>
+            <input class="form-control" id="name" name="name" value="{{ autoservice.name }}" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="date_add">Дата добавления</label>
+            <input type="date" class="form-control" id="date_add" name="date_add" value="{{ autoservice.date_add }}"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Адрес</label>
+            <input class="form-control" id="address" name="address" value="{{ autoservice.address }}" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="tel">Телефон</label>
+            <input type="tel" class="form-control" id="tel" name="tel" value="{{ autoservice.tel }}" placeholder="+71234567890"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ autoservice.email }}" placeholder="auto@mail.ru"/>
+        </div>
+        <div class="form-group">
+            <label for="list-group">Услуги</label>
+            <div class="list-group" >
+                {% for service in services %}
+                <div class="custom-control custom-checkbox">
+                    {% if isEdit and autoservice.services is not empty and service.id in checkedServices%}
+                        <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}" checked="checked">
+                    {% else %}
+                        <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}">
+                    {% endif %}
+                    <label class="custom-control-label" for="{{ service.id }}">{{ service.name}}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <textarea class="form-control" id="description" name="description" rows="9">{{ autoservice.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="photo">Фото</label>
+            <br>
+            <a href="#" id="photo"><img class="img-fluid" src="{{ autoservice.photo }}" width="400" height="700" alt=""/></a>
+        </div>
+        <div class="form-group">
+            <label for="newPhotoSelect">Выберите новое фото</label>
+            <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" name="photo" id="newPhotoSelect" value="{{ autoservice.photo }}"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">{{titleButton|default('Сохранить')  }}</button>
+        </div>
+    </form>
+</div>

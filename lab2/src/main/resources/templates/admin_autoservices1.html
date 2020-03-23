@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${title})">
+</head>
+<body>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="col mt-3 text-center"><h1>Рейтинг автосервисов</h1></div>
+    <div class="w-100"></div>
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Поиск</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <input type="text" class="form-control search-input" placeholder="Введите название автосервиса">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary search-button" type="button">Найти</button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div th:each="autoservice : ${autoservices}" class="col-sm-3 col-md-4 mb-4">
+            <div class="card border-primary h-100">
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                        Действия
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{'/one_autoservice/{id}'(id=${autoservice.id})}" href="#">Посмотреть</a>
+                        <a class="dropdown-item" th:href="@{'/one_autoservice_admin/{id}'(id=${autoservice.id})}" href="#">Изменить</a>
+                        <form id="form1" th:action="@{'/api/autoservice/delete/{id}'(id=${autoservice.id})}" method="post">
+                            <a class="dropdown-item" onclick="parentNode.submit();" >Удалить</a>
+                        </form>
+                    </div>
+                </div>
+                <a class="d-none d-lg-block" href="#"><img class="card-img-top" th:src="@{${autoservice.photoPath}}"
+                                                           src="assets/services/check_engine.jpeg" width="700"
+                                                           height="400" alt=""/></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a th:href="@{'/one_autoservice/{id}'(id=${autoservice.id})}"th:text="${autoservice.name}">Check Engine</a>
+                    </h4>
+
+                    <div class="card-subtitle"><span><i class="fas fa-map-marker"></i></span>&nbsp;<a th:text="${autoservice.address}"></a></div>
+                    <i class="fas fa-phone"></i><a href="tel:+74951813273" th:text="${autoservice.tel}"></a>
+                    <p class="card-text font-card-text" th:text="${autoservice.description}"></p>
+                </div>
+                <div class="card-footer">
+                    <!-- <small class="text-muted">Рейтинг: 5.0 &nbsp; &#9733; &#9733; &#9733; &#9733; &#9733;</small> -->
+                     <br>
+                     <small class="text-muted">Дата добавления <span th:text="${#dates.format(autoservice.dateAdd, 'dd.MM.yyyy')}"></span></small>
+                     <div class="w-100"></div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+ </div>
+ <!-- /.row -->
+
+
+<!-- /.container -->
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

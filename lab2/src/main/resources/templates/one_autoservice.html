@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(${title})">
+<body>
+
+<nav th:replace="fragments/nav :: nav"></nav>
+<!-- Page Content -->
+<div th:object="${autoservice}" class="container">
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col">
+            <!-- Title -->
+            <h1 class="mt-4" th:text="*{name}"></h1>
+            <hr>
+            <!-- Date/Time -->
+            <p>Дата добавления: <span th:text="*{dateAdd}"></span> </p>
+            <hr>
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" th:src="@{${autoservice.photoPath}}" src="assets/no-image.png.jpg" width="400" height="700" alt="">
+            <hr>
+            <div class="font-search-subtitle"><span><i class="fas fa-map-marker"></i></span> <span th:text="*{address}"></span>
+            </div>
+            <i class="fas fa-phone"></i><a th:href="'tel:'+ *{tel}" th:text="*{tel}">&nbsp;</a>
+            <hr>
+            <!-- Post Content -->
+            <p class="lead mt-2">Описание автосервиса</p>
+            <p th:text="*{description}"></p>
+            <div class="form-group">
+                <label class="font-search-subtitle">Услуги</label>
+                <div class="list-group">
+                    <div th:each="service : ${services}" class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" th:id="'customCheck1'+${service.id}" th:name="'customCheck1'+${service.id}"
+                               disabled th:checked="${#lists.contains(autoservice.serviceList,service)}">
+                        <label class="custom-control-label" th:text="${service.name}" th:for="'customCheck1'+${service.id}"></label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base.twig' %}
+
+{% block title %}Просмотр автосервиса{% endblock %}
+
+{% block body %}
+<div  class="container">
+
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col">
+            <!-- Title -->
+            <h1 class="mt-4">{{autoservice.name }}</h1>
+            <hr>
+            <!-- Date/Time -->
+            <p>Дата добавления: <span>{{autoservice.dateAdd|date('d.m.y')}}</span> </p>
+            <hr>
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{autoservice.photo}}" width="400" height="700" alt="">
+
+            <hr>
+            <div class="font-search-subtitle"><span><i class="fas fa-map-marker"></i></span> {{autoservice.address}}
+                &nbsp;
+            </div>
+            <i class="fas fa-phone"></i><a href="{{'tel:' ~ autoservice.tel}}}" >{{ autoservice.tel }}</a>
+            <hr>
+            <!-- Post Content -->
+            <p class="lead mt-2">Описание автосервиса</p>
+            <p>{{autoservice.description}}</p>
+            <div class="form-group">
+                <div class="list-group" >
+                    {% for service in services %}
+                        <div class="custom-control custom-checkbox">
+                            {% if service.id in checkedServices%}
+                                <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}" checked="checked">
+                            {% else %}
+                                <input type="checkbox" id="{{ service.id }}" class="custom-control-input"  name="{{ 'servicesCheck'~service.id }}">
+                            {% endif %}
+                            <label class="custom-control-label" for="{{ service.id }}">{{ service.name}}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+{% endblock %}

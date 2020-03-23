@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{/assets/logo.png}" width="32" height="32">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAutoservices" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для автосервисов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownAutoservices">
+                    <a class="dropdown-item" th:href="@{/all_requests}">Список заявок</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/add_autoservice_admin}">Добавить автосервис</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClients" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Для клиентов
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                    <a class="dropdown-item" th:href="@{/autoservices}">Список автосервисов</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/one_request_admin}">Добавить заявку на ремонт</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="@{/admin_autoservices}">Редактирование автомастерских</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</html>
